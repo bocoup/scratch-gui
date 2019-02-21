@@ -16,6 +16,7 @@ import text2speechImage from './text2speech.png';
 import text2speechInsetImage from './text2speech-small.svg';
 import makeymakeyImage from './makeymakey.png';
 import makeymakeyInsetImage from './makeymakey-small.svg';
+import apolloImage from './apollo.png';
 
 import microbitPeripheralImage from './peripheral-connection/microbit/microbit-illustration.svg';
 import microbitMenuImage from './peripheral-connection/microbit/microbit-small.svg';
@@ -232,6 +233,25 @@ export default [
             />
         ),
         helpLink: 'https://scratch.mit.edu/wedo'
-
-    }
+    },
+    {
+        name: (
+            <FormattedMessage
+                defaultMessage="Apollo"
+                description="Name for the 'Apollo' extension"
+                id="gui.extension.customExt.name"
+            />
+        ),
+        extensionId: 'customExt',
+        iconURL: apolloImage,
+        insetIconURL: apolloImage,
+        description: (
+            <FormattedMessage
+                defaultMessage="Play with the Apollo Moon landing."
+                description="Description for the 'Apollo' extension"
+                id="gui.extension.customExt.description"
+            />
+        ),
+        featured: true
+    },
 ];
