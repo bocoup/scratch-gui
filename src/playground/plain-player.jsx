@@ -52,7 +52,7 @@ import {BitmapAdapter as V2BitmapAdapter} from 'scratch-svg-renderer';
 const Scratch = {};
 
 const loadProject = function () {
-  Scratch.vm.downloadProjectId('288899996');
+  Scratch.vm.downloadProjectId('10128067');
 };
 
 window.onload = function () {
