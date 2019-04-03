@@ -1,4 +1,4 @@
-module.exports = `<!doctype html>
+export default `<!doctype html>
 <html>
   <style>
   .body {
