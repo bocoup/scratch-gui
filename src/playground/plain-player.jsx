@@ -8,6 +8,13 @@ const ASSET_SERVER = 'https://assets.scratch.mit.edu/';
 const PROJECT_SERVER = 'https://projects.scratch.mit.edu/';
 const INTERNAL_ASSET_PATH = 'internalapi/asset/';
 
+const Scratch = {};
+
+const loadProject = function () {
+  //Scratch.vm.downloadProjectId('10128067');
+  Scratch.vm.downloadProjectId('299836206');
+};
+
 /**
  * This is pulled from scratch-vm/playground/benchmark.js
  * @param {Asset} asset - calculate a URL for this asset.
@@ -39,11 +46,6 @@ function getAssetUrl(asset) {
   return assetUrlParts.join('');
 }
 
-const Scratch = {};
-
-const loadProject = function () {
-  Scratch.vm.downloadProjectId('10128067');
-};
 
 window.onload = function () {
   // Lots of global variables to make debugging easier
