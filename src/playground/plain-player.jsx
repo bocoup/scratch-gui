@@ -2,8 +2,7 @@ const VirtualMachine = require('scratch-vm');
 const Storage = require('scratch-storage');
 const RenderWebGL = require('scratch-render');
 const AudioEngine = require('scratch-audio');
-
-// TODO VAL -- look for these functions in scratch-gui or vm
+const { BitmapAdapter } = require('scratch-svg-renderer');
 
 const ASSET_SERVER = 'https://assets.scratch.mit.edu/';
 const PROJECT_SERVER = 'https://projects.scratch.mit.edu/';
@@ -40,15 +39,6 @@ function getAssetUrl(asset) {
   return assetUrlParts.join('');
 }
 
-function getProjectUrlById (id) {
-  return `${PROJECT_SERVER}${id}`;
-}
-//////////////////
-
-// Val added:
-import {BitmapAdapter as V2BitmapAdapter} from 'scratch-svg-renderer';
-
-
 const Scratch = {};
 
 const loadProject = function () {
@@ -61,20 +51,15 @@ window.onload = function () {
 
   const vm = new VirtualMachine();
   Scratch.vm = vm;
-  Scratch.vm.attachV2BitmapAdapter(new V2BitmapAdapter());
+  Scratch.vm.attachV2BitmapAdapter(new BitmapAdapter());
 
   const storage = new Storage();
   const AssetType = storage.AssetType;
-  storage.addWebSource([AssetType.Project], getProjectUrl);
-  storage.addWebSource([AssetType.ImageVector, AssetType.ImageBitmap, AssetType.Sound], getAssetUrl);
+  storage.addWebStore([AssetType.Project], getProjectUrl);
+  storage.addWebStore([AssetType.ImageVector, AssetType.ImageBitmap, AssetType.Sound], getAssetUrl);
   vm.attachStorage(storage);
 
   loadProject();
-
-  // vm.on('PROJECT_RUN_START', () => {
-  //   console.log('PROJECT_RUN_START');
-  //   setTimeout(() => vm.greenFlag(), 1000);
-  // });
 
   vm.on('workspaceUpdate', () => {
     console.log('workspaceUpdate');
