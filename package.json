@@ -29,6 +29,9 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
+  "dependencies": {
+    "scratch-vm": "github:Bocoup/scratch-vm#develop-player"
+  },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
@@ -111,7 +114,6 @@
     "scratch-render": "0.1.0-prerelease.20190326161919",
     "scratch-storage": "1.2.2",
     "scratch-svg-renderer": "0.2.0-prerelease.20190329052730",
-    "scratch-vm": "0.2.0-prerelease.20190410143927",
     "selenium-webdriver": "3.6.0",
     "startaudiocontext": "1.2.1",
     "style-loader": "^0.23.0",
