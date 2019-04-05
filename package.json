@@ -30,7 +30,7 @@
     "react-dom": "^16.0.0"
   },
   "dependencies": {
-    "scratch-vm": "github:Bocoup/scratch-vm#develop-player"
+    "scratch-vm": "github:bocoup/scratch-vm#develop-player"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
