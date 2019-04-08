@@ -171,7 +171,7 @@ module.exports = [
             }),
             new HtmlWebpackPlugin({
                 chunks: ['lib.min', 'standalone-player'],
-                template: 'src/playground/standalone-index.html.js',
+                template: 'src/playground/standalone-player.html.js',
                 filename: 'standalone-player.html',
                 title: 'Scratch 3.0 GUI: Single Project Player Without Editor Example'
             }),
