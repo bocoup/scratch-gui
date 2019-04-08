@@ -30,7 +30,8 @@
     "react-dom": "^16.0.0"
   },
   "dependencies": {
-    "scratch-vm": "github:bocoup/scratch-vm#develop-player"
+    "scratch-vm": "github:bocoup/scratch-vm#develop-player",
+    "scratch-render": "github:bocoup/scratch-render#develop-player",
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
@@ -111,7 +112,6 @@
     "scratch-blocks": "0.1.0-prerelease.1554297463",
     "scratch-l10n": "3.1.20190410143750",
     "scratch-paint": "0.2.0-prerelease.20190318170811",
-    "scratch-render": "0.1.0-prerelease.20190326161919",
     "scratch-storage": "1.2.2",
     "scratch-svg-renderer": "0.2.0-prerelease.20190329052730",
     "selenium-webdriver": "3.6.0",
