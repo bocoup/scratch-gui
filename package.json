@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "scratch-vm": "github:bocoup/scratch-vm#develop-player",
-    "scratch-render": "github:bocoup/scratch-render#develop-player",
+    "scratch-render": "github:bocoup/scratch-render#develop-player"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
