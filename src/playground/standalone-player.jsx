@@ -11,8 +11,7 @@ const INTERNAL_ASSET_PATH = 'internalapi/asset/';
 const Scratch = {};
 
 const loadProject = function () {
-    Scratch.vm.downloadProjectId('10128067'); // Make it dance
-    // Scratch.vm.downloadProjectId('299836206'); // Broken cloud
+    Scratch.vm.downloadProjectId('289970867'); // Super Chano Bros
 };
 
 /**
