@@ -4,9 +4,6 @@ import AudioEngine from 'scratch-audio';
 import {BitmapAdapter} from 'scratch-svg-renderer';
 import storage from '../lib/storage';
 
-const ASSET_SERVER = 'https://assets.scratch.mit.edu';
-const PROJECT_SERVER = 'https://projects.scratch.mit.edu';
-
 const Scratch = {};
 
 const loadProject = function () {
@@ -21,8 +18,6 @@ window.onload = function () {
     Scratch.vm.attachV2BitmapAdapter(new BitmapAdapter());
 
     // Initialize storage
-    storage.setProjectHost(PROJECT_SERVER);
-    storage.setAssetHost(ASSET_SERVER);
     storage.addOfficialScratchWebStores();
 
     vm.attachStorage(storage);
