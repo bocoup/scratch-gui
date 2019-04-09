@@ -1,12 +1,11 @@
 import VirtualMachine from 'scratch-vm';
-import Storage from 'scratch-storage';
 import RenderWebGL from 'scratch-render';
 import AudioEngine from 'scratch-audio';
 import {BitmapAdapter} from 'scratch-svg-renderer';
+import storage from '../lib/storage';
 
-const ASSET_SERVER = 'https://assets.scratch.mit.edu/';
-const PROJECT_SERVER = 'https://projects.scratch.mit.edu/';
-const INTERNAL_ASSET_PATH = 'internalapi/asset/';
+const ASSET_SERVER = 'https://assets.scratch.mit.edu';
+const PROJECT_SERVER = 'https://projects.scratch.mit.edu';
 
 const Scratch = {};
 
@@ -14,50 +13,18 @@ const loadProject = function () {
     Scratch.vm.downloadProjectId('289970867'); // Super Chano Bros
 };
 
-/**
- * This is pulled from scratch-vm/playground/benchmark.js
- * @param {Asset} asset - calculate a URL for this asset.
- * @returns {string} a URL to download a project file.
- */
-const getProjectUrl = function (asset) {
-    const assetIdParts = asset.assetId.split('.');
-    const assetUrlParts = [PROJECT_SERVER, assetIdParts[0]];
-    if (assetIdParts[1]) {
-        assetUrlParts.push(assetIdParts[1]);
-    }
-    return assetUrlParts.join('');
-};
-
-/**
- * This is pulled from scratch-vm/playground/benchmark.js
- * @param {Asset} asset - calculate a URL for this asset.
- * @returns {string} a URL to download a project asset (PNG, WAV, etc.)
- */
-const getAssetUrl = function (asset) {
-    const assetUrlParts = [
-        ASSET_SERVER,
-        INTERNAL_ASSET_PATH,
-        asset.assetId,
-        '.',
-        asset.dataFormat || asset.assetType.runtimeFormat,
-        '/get/'
-    ];
-    return assetUrlParts.join('');
-};
-
-
 window.onload = function () {
-    // Lots of global variables to make debugging easier
-    // Instantiate the VM.
 
+    // Instantiate the VM.
     const vm = new VirtualMachine();
     Scratch.vm = vm;
     Scratch.vm.attachV2BitmapAdapter(new BitmapAdapter());
 
-    const storage = new Storage();
-    const AssetType = storage.AssetType;
-    storage.addWebStore([AssetType.Project], getProjectUrl);
-    storage.addWebStore([AssetType.ImageVector, AssetType.ImageBitmap, AssetType.Sound], getAssetUrl);
+    // Initialize storage
+    storage.setProjectHost(PROJECT_SERVER);
+    storage.setAssetHost(ASSET_SERVER);
+    storage.addOfficialScratchWebStores();
+
     vm.attachStorage(storage);
 
     loadProject();
