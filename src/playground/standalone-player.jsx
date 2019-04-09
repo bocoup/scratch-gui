@@ -4,8 +4,12 @@ import AudioEngine from 'scratch-audio';
 import {BitmapAdapter} from 'scratch-svg-renderer';
 import storage from '../lib/storage';
 
+// This file is an example of how to create a standalone, full screen
+// minimal scratch player without the editor view.
+
+const EXAMPLE_PROJECT = 10128067; // 'Make it Dance' Project
 const loadProject = function () {
-    Scratch.vm.downloadProjectId('289970867'); // Super Chano Bros
+    Scratch.vm.downloadProjectId(EXAMPLE_PROJECT);
 };
 
 window.onload = function () {
@@ -16,7 +20,6 @@ window.onload = function () {
 
     // Initialize storage
     storage.addOfficialScratchWebStores();
-
     vm.attachStorage(storage);
 
     loadProject();
