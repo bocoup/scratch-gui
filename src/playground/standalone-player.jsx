@@ -4,8 +4,6 @@ import AudioEngine from 'scratch-audio';
 import {BitmapAdapter} from 'scratch-svg-renderer';
 import storage from '../lib/storage';
 
-const Scratch = {};
-
 const loadProject = function () {
     Scratch.vm.downloadProjectId('289970867'); // Super Chano Bros
 };
@@ -14,8 +12,7 @@ window.onload = function () {
 
     // Instantiate the VM.
     const vm = new VirtualMachine();
-    Scratch.vm = vm;
-    Scratch.vm.attachV2BitmapAdapter(new BitmapAdapter());
+    vm.attachV2BitmapAdapter(new BitmapAdapter());
 
     // Initialize storage
     storage.addOfficialScratchWebStores();
@@ -31,7 +28,6 @@ window.onload = function () {
     // Instantiate the renderer and connect it to the VM.
     const canvas = document.getElementById('scratch-stage');
     const renderer = new RenderWebGL(canvas);
-    Scratch.renderer = renderer;
     vm.attachRenderer(renderer);
     const audioEngine = new AudioEngine();
     vm.attachAudioEngine(audioEngine);
@@ -45,7 +41,7 @@ window.onload = function () {
             canvasWidth: rect.width,
             canvasHeight: rect.height
         };
-        Scratch.vm.postIOData('mouse', coordinates);
+        vm.postIOData('mouse', coordinates);
     });
     canvas.addEventListener('mousedown', e => {
         const rect = canvas.getBoundingClientRect();
@@ -56,7 +52,7 @@ window.onload = function () {
             canvasWidth: rect.width,
             canvasHeight: rect.height
         };
-        Scratch.vm.postIOData('mouse', data);
+        vm.postIOData('mouse', data);
         e.preventDefault();
     });
     canvas.addEventListener('mouseup', e => {
@@ -68,7 +64,7 @@ window.onload = function () {
             canvasWidth: rect.width,
             canvasHeight: rect.height
         };
-        Scratch.vm.postIOData('mouse', data);
+        vm.postIOData('mouse', data);
         e.preventDefault();
     });
 
@@ -78,7 +74,7 @@ window.onload = function () {
         if (e.target !== document && e.target !== document.body) {
             return;
         }
-        Scratch.vm.postIOData('keyboard', {
+        vm.postIOData('keyboard', {
             key: e.keyCode,
             isDown: true
         });
@@ -87,7 +83,7 @@ window.onload = function () {
     document.addEventListener('keyup', e => {
         // Always capture up events,
         // even those that have switched to other targets.
-        Scratch.vm.postIOData('keyboard', {
+        vm.postIOData('keyboard', {
             key: e.keyCode,
             isDown: false
         });
