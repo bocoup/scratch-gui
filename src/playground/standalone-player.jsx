@@ -7,7 +7,7 @@ import storage from '../lib/storage';
 // This file is an example of how to create a standalone, full screen
 // minimal scratch player without the editor view.
 
-const EXAMPLE_PROJECT = 10128067; // 'Make it Dance' Project
+const EXAMPLE_PROJECT = 289970867; // Mario
 
 window.onload = function () {
 
